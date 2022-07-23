@@ -1,33 +1,40 @@
-import React from 'react';
+import React, { ReactNode } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { getLocalStorage } from "src/Popup/Apis/localStorage";
+import { PATH } from "src/Popup/Constants/index";
+import { StyledLayout } from "src/Popup/StyledComponents/Popup";
+import { LoginPage } from "src/Popup/Pages/index";
 
-declare global {
-  interface Window {
-    chrome: any;
+const PrivateRoute: React.FC<{ isLoggedIn: boolean; children: ReactNode }> = (isLoggedIn, children) => {
+  const navigate = useNavigate();
+  if (!isLoggedIn) {
+    navigate(`${PATH.LOGIN}`);
   }
+  return (
+    <>
+      {children}
+    </>
+  )
 }
 
-const App = () => {
-
-  const { chrome } = window;
-
-  const sendMessage = () => {
-
-    console.log(chrome);
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs: any) => {
-      chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, (response: any) => {
-        console.log(response);
-      });
-    });
-  }
+const Routers = () => {
+  const isLoggedIn = !!getLocalStorage("token");
 
   return (
-    <div className="App">
-      <span>Hello World A</span>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <StyledLayout>
+            <LoginPage />
+          </StyledLayout>
+        }
+      />
+      {/* <PrivateRoute isLoggedIn={isLoggedIn}>
 
-      <button onClick={() => sendMessage()}>handler</button>
-    </div>
-  );
+      </PrivateRoute> */}
+    </Routes>
+  )
 }
 
-export default App;
+export default Routers;

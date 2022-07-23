@@ -6,15 +6,25 @@ declare global {
 
 const { chrome } = window;
 
-chrome.runtime.onMessage.addListener(
-  (request: any, sender: any, sendResponse: any) => {
-    console.log(
-      sender.tab
-        ? "from a content script:" + sender.tab.url
-        : "from the extension"
-    );
-    if (request.greeting === "hello") sendResponse({ farewell: "goodbye" });
-  }
-);
+let port: any;
+
+const startToRelay = () => {
+  port = window.chrome.runtime.connect({
+    name: "stargate-background-content",
+  });
+  console.log(port);
+};
+
+startToRelay();
+
+window.addEventListener("STARGATE_RELAY_REQUEST", (event: any) => {
+  try {
+  } catch (e) {}
+});
+
+chrome.runtime.onMessage.addListener((detail: any) => {
+  const customEvent = new CustomEvent("STARGATE_RELAY_REQUEST", { detail });
+  window.dispatchEvent(customEvent);
+});
 
 export {};
