@@ -1,6 +1,7 @@
 const PATH = {
   LOGIN: "/login",
-  POPUP: "/popup"
+  POPUP: "/popup",
+  ACCOUNT_CREATE: "/create"
 }
 
 const ERRORS = {

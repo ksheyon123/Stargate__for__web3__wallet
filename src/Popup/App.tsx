@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { getLocalStorage } from "src/Popup/Apis/localStorage";
 import { PATH } from "src/Popup/Constants/index";
-import { StyledLayout } from "src/Popup/StyledComponents/Popup";
+import { Layout } from "src/Popup/Components/index";
 import { LoginPage } from "src/Popup/Pages/index";
 
 const PrivateRoute: React.FC<{ isLoggedIn: boolean; children: ReactNode }> = (isLoggedIn, children) => {
@@ -25,9 +25,9 @@ const Routers = () => {
       <Route
         path="/"
         element={
-          <StyledLayout>
+          <Layout>
             <LoginPage />
-          </StyledLayout>
+          </Layout>
         }
       />
       {/* <PrivateRoute isLoggedIn={isLoggedIn}>

@@ -8,3 +8,8 @@ export type ErrorFormat = {
   errCode: number | string;
   errMsg: string;
 }
+
+export type ComboBoxItemType = {
+  name: string | number;
+  value: any;
+}
