@@ -57,7 +57,29 @@ const RegisterPage: React.FC = () => {
             Step 1.
           </div>
           <div className="card-content">
-
+            <div>Create your wallet name</div>
+            <div>
+              Wallet Name
+            </div>
+            <Input
+              value=""
+              handleOnChange={() => { }}
+            />
+            <div>set your wallet password</div>
+            <div>
+              <span>Password</span>
+            </div>
+            <Input
+              value=""
+              handleOnChange={() => { }}
+            />
+            <div>
+              <span>Password</span>
+            </div>
+            <Input
+              value=""
+              handleOnChange={() => { }}
+            />
           </div>
           <div className="card-bottom">
             <Button
@@ -73,7 +95,11 @@ const RegisterPage: React.FC = () => {
             Step 2.
           </div>
           <div className="card-content">
-
+            <div>name</div>
+            <Input
+              value=""
+              handleOnChange={() => { }}
+            />
           </div>
           <div className="card-bottom">
             <Button
