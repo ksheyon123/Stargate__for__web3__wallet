@@ -1,7 +1,7 @@
 const PATH = {
   LOGIN: "/login",
   POPUP: "/popup",
-  ACCOUNT_CREATE: "/create"
+  REGISTER: "/reigister"
 }
 
 const NETWORKS = [

@@ -6,7 +6,7 @@ import {
   Button
 } from "src/Popup/Components/index"
 import { LoginPageContainer } from "src/Popup/Container/index";
-
+import { PATH } from "src/Popup/Constants/index";
 const StyledWrapper = styled.div`
   display : flex;
   flex-direction: column;
@@ -45,7 +45,7 @@ const LoginPage: React.FC = () => {
         handleOnClick={handleOnLogin}
       />
       <div className="link">
-        <span onClick={() => navigate("/")}>계정 생성</span>
+        <span onClick={() => navigate(PATH.REGISTER)}>계정 생성</span>
       </div>
     </StyledWrapper>
   )

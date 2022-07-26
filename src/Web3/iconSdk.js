@@ -9,6 +9,7 @@ const { IcxTransactionBuilder } = IconBuilder;
 
 const createWallet = () => {
   const wallet = IconWallet.create();
+  console.log(wallet);
   const privKey = wallet.getPrivateKey();
   const address = wallet.getAddress();
   return {
@@ -16,5 +17,7 @@ const createWallet = () => {
     address,
   };
 };
+
+const loadKeyfile = () => {};
 
 export { createWallet };
