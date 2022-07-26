@@ -4,7 +4,6 @@ const StyledHeader = styled.div`
   position: fixed;
   top : 0px;
   width : 360px;
-  height : 40px;
   padding : 15px 10px;
   background-color: #AAA;
 `;

@@ -18,6 +18,12 @@ body > #root {
   height: 100%;
 }
 
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

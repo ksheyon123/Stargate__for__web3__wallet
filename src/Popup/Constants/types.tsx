@@ -13,3 +13,9 @@ export type ComboBoxItemType = {
   name: string | number;
   value: any;
 }
+
+export type ClassBinderType = {
+  prefix: string;
+  suffix: string;
+  cond: any;
+}

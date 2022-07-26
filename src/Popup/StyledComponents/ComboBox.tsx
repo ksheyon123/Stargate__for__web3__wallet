@@ -6,7 +6,7 @@ const StyledComboBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width : 120px;
+  width : 180px;
   border : 1px solid #AAA;
   border-radius : 10px;
   background-color : #FFF;
@@ -25,8 +25,19 @@ const StyledComboBox = styled.div`
   }
   & > div.list {
     position: absolute;
+    width : 180px;
+    top : 45px;
+    left : 0px;
+    display: none;
+    background-color : #FFF;
+    border : 1px solid #AAA;
     & > ul {
-
+      & > li {
+        padding :10px 5px;
+      }
+    }
+    &.active {
+      display: block;
     }
   }
 `;

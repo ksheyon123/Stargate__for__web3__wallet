@@ -5,6 +5,12 @@ const loginInputState = atom<string | number>({
   default: "",
 });
 
+const networkIdState = atom<number | null>({
+  key: "networkIdState",
+  default: null
+})
+
 export {
-  loginInputState
+  loginInputState,
+  networkIdState
 }

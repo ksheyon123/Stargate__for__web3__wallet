@@ -5,7 +5,8 @@ import {
   Input,
   Button
 } from "src/Popup/Components/index"
-import { LoginPageContainer } from "src/Popup/Container/LoginPageContainer";
+import { LoginPageContainer } from "src/Popup/Container/index";
+
 const StyledWrapper = styled.div`
   display : flex;
   flex-direction: column;
@@ -32,7 +33,6 @@ const LoginPage: React.FC = () => {
     handleOnLogin
   } = LoginPageContainer();
   const navigate = useNavigate();
-
 
   return (
     <StyledWrapper>
