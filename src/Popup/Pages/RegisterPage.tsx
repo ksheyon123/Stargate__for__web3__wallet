@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { Input, Button } from "src/Popup/Components/index";
 import { RegisterPageContainer } from "src/Popup/Container/index"
-import { classBinder } from "src/Popup/Utils/utils";
+import ic_back from "src/Popup/Assets/back-btn-icon.png";
+import { theme } from "src/Popup/Styles/theme";
+import { classBinder } from "src/Popup/Utils/utils"
+
 const StyledWrapper = styled.div<{ process: number; }>`
   width :100%;
   height: 100%;
@@ -10,7 +14,7 @@ const StyledWrapper = styled.div<{ process: number; }>`
   border : 1px solid #AAA;
   & > div.overflow-cards {
     display: flex;
-    width : calc(300%);
+    width : calc(400%);
     height: 100%;
     transition: ease-in 500ms;
     transform: ${props => `translateX(-${360 * props.process}px)`};
@@ -18,14 +22,47 @@ const StyledWrapper = styled.div<{ process: number; }>`
       width : 360px;
       height : 100%;
       & > div.card-header {
+        display: flex;
+        align-items: center;
         width : 100%;
         height : 50px;
         padding : 10px;
+        & > img {
+          width : 10px;
+          height : 18px;
+          margin-right : 20px;
+          cursor: pointer;
+        }
       }
       & > div.card-content {
         width : 100%;
         height : calc(100% - 100px);
         padding : 0px 10px 10px 10px;
+        & > div.radio-btn-area {
+          display: flex;
+          align-items: center;
+          margin-bottom : 15px;
+          &:last-of-type {
+            margin-bottom : 0px;
+          }
+          & > div.radio-btn {
+            width :16px;
+            height : 16px;
+            border: 1px solid ${theme.gray3};
+            border-radius : 50%;
+            margin-right : 12px;
+            &.on {
+              background-color : ${theme.green};
+              border : none;
+            } 
+          }
+        }
+        & > div.card-description {
+          ${theme.t2};
+        }
+        & > div > span {
+          ${theme.b3};
+        }
       }
       & > div.card-bottom {
         width : 100%;
@@ -42,43 +79,68 @@ const RegisterPage: React.FC = () => {
     setPassword,
     setRePassword,
     setProcess,
+    setToggle,
+    toggle,
     password,
     re_password,
     process
   } = RegisterPageContainer();
+  const navigate = useNavigate();
 
   return (
     <StyledWrapper process={process}>
       <div className="overflow-cards">
-        <div
-          className="card"
-        >
+        <div className="card">
           <div className="card-header">
-            Step 1.
+            <img onClick={() => navigate(-1)} src={ic_back} alt="back-icon" />
+            <span>Step 1.</span>
+            <span>Create / Load Wallet</span>
           </div>
           <div className="card-content">
-            <div>Create your wallet name</div>
-            <div>
-              Wallet Name
+            <div className="radio-btn-area">
+              <div className={classBinder({ prefix: "radio-btn", suffix: "on", cond: toggle === 0 })} />
+              <span>Create Wallet</span>
+            </div>
+            <div className="radio-btn-area">
+              <div className={classBinder({ prefix: "radio-btn", suffix: "", cond: toggle === 1 })} />
+              <span>Load Wallet</span>
+            </div>
+          </div>
+          <div className="card-bottom">
+            <Button
+              name="Next"
+              handleOnClick={() => setProcess(1)}
+            />
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-header">
+            <img onClick={() => setProcess(0)} src={ic_back} alt="back-icon" />
+            <span>Step 2.</span>
+          </div>
+          <div className="card-content">
+            <div className="card-description mgb-20">Create your wallet name</div>
+            <div className="card-name">
+              <span>Wallet Name</span>
             </div>
             <Input
               value=""
               handleOnChange={() => { }}
             />
-            <div>set your wallet password</div>
-            <div>
+            <div className="card-description mgb-20">set your wallet password</div>
+            <div className="card-name">
               <span>Password</span>
             </div>
             <Input
               value=""
-              handleOnChange={() => { }}
+              handleOnChange={setPassword}
             />
-            <div>
+            <div className="card-name">
               <span>Password</span>
             </div>
             <Input
               value=""
-              handleOnChange={() => { }}
+              handleOnChange={setRePassword}
             />
           </div>
           <div className="card-bottom">
@@ -88,11 +150,10 @@ const RegisterPage: React.FC = () => {
             />
           </div>
         </div>
-        <div
-          className="card"
-        >
+        <div className="card">
           <div className="card-header">
-            Step 2.
+            <img onClick={() => setProcess(0)} src={ic_back} alt="back-icon" />
+            <span>Step 2.</span>
           </div>
           <div className="card-content">
             <div>name</div>
@@ -103,20 +164,15 @@ const RegisterPage: React.FC = () => {
           </div>
           <div className="card-bottom">
             <Button
-              name="Prev"
-              handleOnClick={() => setProcess(0)}
-            />
-            <Button
               name="Next"
               handleOnClick={() => setProcess(2)}
             />
           </div>
         </div>
-        <div
-          className="card"
-        >
+        <div className="card">
           <div className="card-header">
-            Step 3.
+            <img onClick={() => setProcess(1)} src={ic_back} alt="back-icon" />
+            <span>Step 3.</span>
           </div>
           <div className="card-content">
 

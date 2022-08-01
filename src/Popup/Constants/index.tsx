@@ -12,7 +12,10 @@ const NETWORKS = [
 ]
 
 const ERRORS = {
-  "L001": "Empty Storage Data"
+  "L001": "Empty Storage Data",
+  "L002": "Empty Input Data",
+
+  "W001": "Invalid Input Data"
 }
 
 export {

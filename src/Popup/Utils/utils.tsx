@@ -1,9 +1,11 @@
 import { ClassBinderType } from "src/Popup/Constants/types";
 
-const classBinder = ({
-  prefix,
-  suffix,
-  cond }: ClassBinderType) => {
+const classBinder = (props: ClassBinderType) => {
+  const {
+    prefix,
+    suffix,
+    cond
+  } = props
   if (cond) {
     return prefix + " " + suffix
   }
