@@ -202,7 +202,7 @@ module.exports = function (webpackEnv) {
     // This means they will be the "root" imports that are included in JS bundle.
     entry: {
       index: paths.appIndexJs,
-      // contentScripts: paths.appContentScriptJs,
+      contentScripts: paths.appContentScriptJs,
     },
     output: {
       // The build folder.
