@@ -32,3 +32,15 @@ code {
 .mgb-20 {
   margin-bottom: 20px;
 }
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}

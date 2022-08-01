@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Input, Button } from "src/Popup/Components/index";
+import { Input, Button, HideSeek } from "src/Popup/Components/index";
 import { RegisterPageContainer } from "src/Popup/Container/index"
 import ic_back from "src/Popup/Assets/back-btn-icon.png";
 import { theme } from "src/Popup/Styles/theme";
 import { classBinder } from "src/Popup/Utils/utils"
+import { PATH } from "../Constants";
 
 const StyledWrapper = styled.div<{ process: number; }>`
   width :100%;
@@ -76,10 +77,12 @@ const StyledWrapper = styled.div<{ process: number; }>`
 const RegisterPage: React.FC = () => {
 
   const {
+    setWalletName,
     setPassword,
     setRePassword,
     setProcess,
     setToggle,
+    walletName,
     toggle,
     password,
     re_password,
@@ -124,42 +127,23 @@ const RegisterPage: React.FC = () => {
               <span>Wallet Name</span>
             </div>
             <Input
-              value=""
-              handleOnChange={() => { }}
+              value={walletName}
+              handleOnChange={setWalletName}
             />
             <div className="card-description mgb-20">set your wallet password</div>
             <div className="card-name">
               <span>Password</span>
             </div>
             <Input
-              value=""
+              value={password}
               handleOnChange={setPassword}
             />
             <div className="card-name">
               <span>Password</span>
             </div>
             <Input
-              value=""
+              value={re_password}
               handleOnChange={setRePassword}
-            />
-          </div>
-          <div className="card-bottom">
-            <Button
-              name="Next"
-              handleOnClick={() => setProcess(1)}
-            />
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-header">
-            <img onClick={() => setProcess(0)} src={ic_back} alt="back-icon" />
-            <span>Step 2.</span>
-          </div>
-          <div className="card-content">
-            <div>name</div>
-            <Input
-              value=""
-              handleOnChange={() => { }}
             />
           </div>
           <div className="card-bottom">
@@ -171,16 +155,29 @@ const RegisterPage: React.FC = () => {
         </div>
         <div className="card">
           <div className="card-header">
-            <img onClick={() => setProcess(1)} src={ic_back} alt="back-icon" />
-            <span>Step 3.</span>
+            <img onClick={() => setProcess(0)} src={ic_back} alt="back-icon" />
+            <span>Step 2.</span>
           </div>
           <div className="card-content">
-
+            <div className="card-description mgb-20">Save your privatekey</div>
+            <div className="card-name">
+              <span>Private Key</span>
+            </div>
+            <div className="flex align-center space-between">
+              <HideSeek
+                width={240}
+                text={"aaaa0AZ"}
+              />
+              <Button
+                name="Copy"
+                handleOnClick={() => { }}
+              />
+            </div>
           </div>
           <div className="card-bottom">
             <Button
-              name="Prev"
-              handleOnClick={() => setProcess(1)}
+              name="Done"
+              handleOnClick={() => navigate(PATH.LOGIN)}
             />
           </div>
         </div>
