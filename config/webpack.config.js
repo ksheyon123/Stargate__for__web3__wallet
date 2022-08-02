@@ -298,6 +298,7 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       fallback: {
+        fs: false,
         assert: require.resolve("assert"),
         os: require.resolve("os-browserify/browser"),
         buffer: require.resolve("buffer"),
