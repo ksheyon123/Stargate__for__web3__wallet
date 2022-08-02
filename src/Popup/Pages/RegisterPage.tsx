@@ -7,7 +7,8 @@ import ic_back from "src/Popup/Assets/back-btn-icon.png";
 import { theme } from "src/Popup/Styles/theme";
 import { classBinder } from "src/Popup/Utils/utils"
 import { PATH } from "../Constants";
-
+import { createWallet } from "src/Web3/iconSdk";
+import { a } from "src/Signer/signer";
 const StyledWrapper = styled.div<{ process: number; }>`
   width :100%;
   height: 100%;
@@ -89,6 +90,17 @@ const RegisterPage: React.FC = () => {
     process
   } = RegisterPageContainer();
   const navigate = useNavigate();
+
+  const handleOnSubmit = async () => {
+    try {
+      const { privKey } = createWallet();
+
+      const rsp = await a(password, privKey);
+      console.log(rsp);
+    } catch (e) {
+      throw e;
+    }
+  }
 
   return (
     <StyledWrapper process={process}>
@@ -177,7 +189,11 @@ const RegisterPage: React.FC = () => {
           <div className="card-bottom">
             <Button
               name="Done"
-              handleOnClick={() => navigate(PATH.LOGIN)}
+              handleOnClick={async () => {
+                await handleOnSubmit().then(() => {
+                  navigate(PATH.LOGIN);
+                });
+              }}
             />
           </div>
         </div>
