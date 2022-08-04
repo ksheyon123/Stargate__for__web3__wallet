@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/polyfill": "^7.12.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.4",
@@ -85,6 +86,9 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "browser": {
+    "fs": false
   },
   "browserslist": {
     "production": [

@@ -201,7 +201,7 @@ module.exports = function (webpackEnv) {
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry: {
-      index: paths.appIndexJs,
+      index: [paths.appIndexJs],
       // contentScripts: paths.appContentScriptJs,
     },
     output: {
@@ -298,7 +298,6 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
       fallback: {
-        fs: false,
         assert: require.resolve("assert"),
         os: require.resolve("os-browserify/browser"),
         buffer: require.resolve("buffer"),
@@ -311,9 +310,9 @@ module.exports = function (webpackEnv) {
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
       // https://github.com/facebook/create-react-app/issues/253
-      alias: {
-        src: path.resolve(__dirname, "../", "src"),
-      },
+      // alias: {
+      //   src: path.resolve(__dirname, "../", "src"),
+      // },
       modules: [path.resolve(__dirname, "../", "node_modules")],
       // These are the reasonable defaults supported by the Node ecosystem.
       // We also include JSX as a common component filename extension to support

@@ -20,6 +20,5 @@ root.render(
         </ThemeProvider>
       </MemoryRouter>
     </RecoilRoot>
-
   </React.StrictMode>
 );

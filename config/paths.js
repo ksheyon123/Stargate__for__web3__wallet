@@ -62,6 +62,7 @@ module.exports = {
     resolveApp,
     "src/ContentScript/contentScript"
   ),
+  appSignerScriptJs: resolveModule(resolveApp, "src/Signer/signer"),
 
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp("src"),

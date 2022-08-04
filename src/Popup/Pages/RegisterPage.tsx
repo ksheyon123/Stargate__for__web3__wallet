@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Input, Button, HideSeek } from "src/Popup/Components/index";
@@ -8,7 +8,9 @@ import { theme } from "src/Popup/Styles/theme";
 import { classBinder } from "src/Popup/Utils/utils"
 import { PATH } from "../Constants";
 import { createWallet } from "src/Web3/iconSdk";
-import { toV3 } from "src/Signer/signer";
+import { toV3 } from "src/Popup/Signer/signer";
+import fileSaver from "src/lib/FileSaver.min.js";
+import { downloadFile } from "src/Popup/Utils/utils";
 
 const StyledWrapper = styled.div<{ process: number; }>`
   width :100%;
@@ -92,16 +94,17 @@ const RegisterPage: React.FC = () => {
   } = RegisterPageContainer();
   const navigate = useNavigate();
 
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = useCallback(async () => {
     try {
       const { privKey } = createWallet();
 
-      const rsp = await toV3(password, privKey);
+      const keystore = await toV3(password, privKey);
+      const rsp = downloadFile("", JSON.stringify(keystore), fileSaver);
+      console.log(rsp);
     } catch (e) {
       throw e;
     }
-  }
-
+  }, []);
   return (
     <StyledWrapper process={process}>
       <div className="overflow-cards">

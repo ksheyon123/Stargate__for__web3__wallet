@@ -12,6 +12,24 @@ const classBinder = (props: ClassBinderType) => {
   return prefix;
 }
 
+const downloadFile = (address: string, data: string, FileSaver: any) => {
+  let filename = "";
+  if (address) {
+    filename = "UTC--" + new Date().toISOString() + "--" + address;
+  } else {
+    filename = "iconex_" + new Date().toISOString();
+  }
+  // Windows does not permit ":" in filenames, replace all with "-"
+  console.log(navigator);
+  console.log(navigator.appVersion);
+  if (navigator.appVersion.indexOf("Win") !== -1)
+    filename = filename.split(":").join("-");
+  var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
+  FileSaver.saveAs(blob, filename);
+  return true;
+}
+
 export {
-  classBinder
+  classBinder,
+  downloadFile
 }
