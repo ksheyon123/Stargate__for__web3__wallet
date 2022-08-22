@@ -8,6 +8,12 @@ import { PATH } from "src/Popup/Constants/index";
 import 'src/Popup/global.css';
 import App from 'src/Popup/App';
 
+declare global {
+  interface Window {
+    chrome: any;
+  }
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

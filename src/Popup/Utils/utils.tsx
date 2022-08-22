@@ -12,12 +12,12 @@ const classBinder = (props: ClassBinderType) => {
   return prefix;
 }
 
-const downloadFile = (address: string, data: string, FileSaver: any) => {
+const downloadFile = async (address: string, data: string, FileSaver: any) => {
   let filename = "";
   if (address) {
     filename = "UTC--" + new Date().toISOString() + "--" + address;
   } else {
-    filename = "iconex_" + new Date().toISOString();
+    filename = "stargate" + new Date().toISOString();
   }
   // Windows does not permit ":" in filenames, replace all with "-"
   console.log(navigator);

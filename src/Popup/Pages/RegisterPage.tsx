@@ -11,6 +11,7 @@ import { createWallet } from "src/Web3/iconSdk";
 import { toV3 } from "src/Popup/Signer/signer";
 import fileSaver from "src/lib/FileSaver.min.js";
 import { downloadFile } from "src/Popup/Utils/utils";
+import { setLocalStorage } from "src/Popup/Apis/localStorage";
 
 const StyledWrapper = styled.div<{ process: number; }>`
   width :100%;
@@ -99,8 +100,10 @@ const RegisterPage: React.FC = () => {
       const { privKey } = createWallet();
 
       const keystore = await toV3(password, privKey);
-      const rsp = downloadFile("", JSON.stringify(keystore), fileSaver);
-      console.log(rsp);
+      await downloadFile("", JSON.stringify(keystore), fileSaver).then(() => {
+        setLocalStorage({ key: "keystore", data: JSON.stringify(keystore) });
+      });
+
     } catch (e) {
       throw e;
     }

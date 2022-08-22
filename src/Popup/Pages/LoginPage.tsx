@@ -7,6 +7,7 @@ import {
 } from "src/Popup/Components/index"
 import { LoginPageContainer } from "src/Popup/Container/index";
 import { PATH } from "src/Popup/Constants/index";
+
 const StyledWrapper = styled.div`
   display : flex;
   flex-direction: column;
