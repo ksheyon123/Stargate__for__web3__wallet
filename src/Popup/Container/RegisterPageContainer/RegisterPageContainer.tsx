@@ -1,12 +1,10 @@
 import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Errors } from "src/Popup/Apis/Error";
 import { ERRORS, PATH } from "src/Popup/Constants/index";
 import { ERROR_CODES } from "src/Popup/Constants/enums";
 
 export const RegisterPageContainer = () => {
 
-  const navigate = useNavigate();
 
   const [toggle, setToggle] = useState<number>(0);
 
@@ -37,7 +35,6 @@ export const RegisterPageContainer = () => {
       if (process !== 2) return;
       await InputFilter();
 
-      navigate(PATH.LOGIN);
     } catch (e) {
       console.log(e)
       throw e;

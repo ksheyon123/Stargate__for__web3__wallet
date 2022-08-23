@@ -1,12 +1,10 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { Input, Button, HideSeek } from "src/Popup/Components/index";
 import { RegisterPageContainer } from "src/Popup/Container/index"
 import ic_back from "src/Popup/Assets/back-btn-icon.png";
 import { theme } from "src/Popup/Styles/theme";
 import { classBinder } from "src/Popup/Utils/utils"
-import { PATH } from "../Constants";
 import { createWallet } from "src/Web3/iconSdk";
 import { toV3 } from "src/Popup/Signer/signer";
 import fileSaver from "src/lib/FileSaver.min.js";
@@ -93,7 +91,6 @@ const RegisterPage: React.FC = () => {
     re_password,
     process
   } = RegisterPageContainer();
-  const navigate = useNavigate();
 
   const handleOnSubmit = useCallback(async () => {
     try {
@@ -113,7 +110,7 @@ const RegisterPage: React.FC = () => {
       <div className="overflow-cards">
         <div className="card">
           <div className="card-header">
-            <img onClick={() => navigate(-1)} src={ic_back} alt="back-icon" />
+            <img onClick={() => { }} src={ic_back} alt="back-icon" />
             <span>Step 1.</span>
             <span>Create / Load Wallet</span>
           </div>
@@ -197,7 +194,6 @@ const RegisterPage: React.FC = () => {
               name="Done"
               handleOnClick={async () => {
                 await handleOnSubmit().then(() => {
-                  navigate(PATH.LOGIN);
                 });
               }}
             />

@@ -1,6 +1,13 @@
 import React, { ReactNode } from "react";
-import { StyledLayout } from "src/Popup/StyledComponents/Popup";
-import { Header } from "src/Popup/Components/index"
+import styled from "styled-components";
+import { Header } from "src/Popup/Components/index";
+
+const StyledLayout = styled.div`
+  width : 100%;
+  height : 100%;
+  border : 1px solid #AAA;
+`;
+
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <StyledLayout>

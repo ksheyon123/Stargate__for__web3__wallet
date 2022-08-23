@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
   Input,
@@ -33,7 +32,6 @@ const LoginPage: React.FC = () => {
     setLoginValue,
     handleOnLogin
   } = LoginPageContainer();
-  const navigate = useNavigate();
 
   return (
     <StyledWrapper>
@@ -46,7 +44,7 @@ const LoginPage: React.FC = () => {
         handleOnClick={handleOnLogin}
       />
       <div className="link">
-        <span onClick={() => navigate(PATH.REGISTER)}>계정 생성</span>
+        <span onClick={() => { }}>계정 생성</span>
       </div>
     </StyledWrapper>
   )
