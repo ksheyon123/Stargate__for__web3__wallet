@@ -9,7 +9,6 @@ const StyledHeader = styled.div`
   top : 0px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width : 360px;
   height : 60px;
   background-color: ${theme.headerBg};
@@ -19,6 +18,15 @@ const StyledHeader = styled.div`
     height : 32px;
     border-radius: 50%;
     background-color : #000;
+    cursor : pointer;
+    margin-right : 15px;
+  }
+  & > div.combobox-box {
+    display: flex;
+    align-items: center;
+    flex : 1 1 auto;
+    flex-flow : row nowrap;
+    justify-content: flex-end;
   }
 `;
 
@@ -34,7 +42,9 @@ const Header: React.FC = () => {
       <div className="logo-box">
         <img />
       </div>
-      <ComboBox list={items} handleOnClick={setNetworkId} />
+      <div className="combobox-box">
+        <ComboBox list={items} handleOnClick={setNetworkId} />
+      </div>
     </StyledHeader>
   )
 }

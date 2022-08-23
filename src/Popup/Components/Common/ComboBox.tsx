@@ -2,25 +2,36 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
 import { ComboBoxItemType } from "src/Popup/Constants/types";
 import { classBinder } from "src/Popup/Utils/utils";
+import ic_down from 'src/Popup/Assets/01-icon-20-px-arrow-down@2x.png';
+import ic_up from 'src/Popup/Assets/01-icon-20-px-arrow-up@2x.png';
+import { theme } from 'src/Popup/Styles/theme';
 
 interface IProps {
   list: ComboBoxItemType[];
   handleOnClick: Dispatch<SetStateAction<any>>;
 }
 
-const StyledComboBox = styled.div`
+const StyledComboBox = styled.div<{ toggle: boolean; }>`
+  ${theme.c1};
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width : 180px;
-  border : 1px solid #AAA;
+  border : 1px solid ${theme.gray4};
   border-radius : 10px;
-  background-color : #FFF;
+  background-color : transparent;
+  padding : 1px;
   & > div.item {
-    padding : 10px 15px;
     color : #222;
+    margin : 2px 12px;
+    padding-right : 20px;
+    ${props => props.toggle ? `
+    
+    ` : `
+    `}
+    background : url(${ic_down}) center right 20px no-repeat;
+    background-size : 20px 20px;
   }
   & > div.no-list {
     position: absolute;
@@ -81,7 +92,9 @@ const ComboBox: React.FC<IProps> = (props) => {
   }
 
   return (
-    <StyledComboBox>
+    <StyledComboBox
+      toggle={toggle}
+    >
       <div
         onClick={() => setToggle(!toggle)}
         className="item">
