@@ -1,4 +1,9 @@
 import { atom } from "recoil";
+import { PageNavigation } from 'src/Popup/Constants/types';
+const pageNavigationState = atom<PageNavigation>({
+  key: "pageNavigationState",
+  default: "LOGIN",
+})
 
 const loginInputState = atom<string | number>({
   key: "loginInputState",
@@ -11,6 +16,7 @@ const networkIdState = atom<number | null>({
 })
 
 export {
+  pageNavigationState,
   loginInputState,
   networkIdState
 }

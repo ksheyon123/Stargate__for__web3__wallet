@@ -30,7 +30,8 @@ const LoginPage: React.FC = () => {
   const {
     loginVale,
     setLoginValue,
-    handleOnLogin
+    handleOnLogin,
+    setPageNav
   } = LoginPageContainer();
 
   return (
@@ -44,7 +45,9 @@ const LoginPage: React.FC = () => {
         handleOnClick={handleOnLogin}
       />
       <div className="link">
-        <span onClick={() => { }}>계정 생성</span>
+        <span onClick={() => {
+          setPageNav("REGISTER")
+        }}>계정 생성</span>
       </div>
     </StyledWrapper>
   )

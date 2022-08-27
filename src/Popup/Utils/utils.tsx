@@ -1,4 +1,5 @@
 import { ClassBinderType } from "src/Popup/Constants/types";
+import { saveAs } from "file-saver";
 
 const classBinder = (props: ClassBinderType) => {
   const {
@@ -12,7 +13,7 @@ const classBinder = (props: ClassBinderType) => {
   return prefix;
 }
 
-const downloadFile = async (address: string, data: string, FileSaver: any) => {
+const downloadFile = async (address: string, data: string) => {
   let filename = "";
   if (address) {
     filename = "UTC--" + new Date().toISOString() + "--" + address;
@@ -25,7 +26,7 @@ const downloadFile = async (address: string, data: string, FileSaver: any) => {
   if (navigator.appVersion.indexOf("Win") !== -1)
     filename = filename.split(":").join("-");
   var blob = new Blob([data], { type: "text/plain;charset=utf-8" });
-  FileSaver.saveAs(blob, filename);
+  saveAs(blob, filename);
   return true;
 }
 

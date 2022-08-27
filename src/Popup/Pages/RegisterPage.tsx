@@ -7,7 +7,6 @@ import { theme } from "src/Popup/Styles/theme";
 import { classBinder } from "src/Popup/Utils/utils"
 import { createWallet } from "src/Web3/iconSdk";
 import { toV3 } from "src/Popup/Signer/signer";
-import fileSaver from "src/lib/FileSaver.min.js";
 import { downloadFile } from "src/Popup/Utils/utils";
 import { setLocalStorage } from "src/Popup/Apis/localStorage";
 
@@ -97,7 +96,7 @@ const RegisterPage: React.FC = () => {
       const { privKey } = createWallet();
 
       const keystore = await toV3(password, privKey);
-      await downloadFile("", JSON.stringify(keystore), fileSaver).then(() => {
+      await downloadFile("", JSON.stringify(keystore)).then(() => {
         setLocalStorage({ key: "keystore", data: JSON.stringify(keystore) });
       });
 

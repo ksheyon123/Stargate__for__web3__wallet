@@ -1,4 +1,6 @@
 
+export type PageNavigation = "LOGIN" | "REGISTER" | "WALLET_1";
+
 export type StorageType = {
   key: string;
   data: string;
