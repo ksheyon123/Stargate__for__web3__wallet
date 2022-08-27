@@ -7,6 +7,7 @@ import { HeaderContainer } from "src/Popup/Container/index";
 const StyledHeader = styled.div`
   position: fixed;
   top : 0px;
+  z-index: 999;
   display: flex;
   align-items: center;
   width : 360px;

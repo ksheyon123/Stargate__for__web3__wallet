@@ -7,7 +7,15 @@ const PATH = {
 const NETWORKS = [
   {
     name: "HAVAH Network",
-    value: 0
+    value: 256
+  },
+  {
+    name: "VEGA Network",
+    value: 257
+  },
+  {
+    name: "DENEB Network",
+    value: 272
   }
 ]
 
