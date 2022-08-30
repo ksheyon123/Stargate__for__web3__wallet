@@ -17,7 +17,7 @@ const StyledWrapper = styled.div<{ process: number; }>`
   border : 1px solid #AAA;
   & > div.overflow-cards {
     display: flex;
-    width : calc(400%);
+    width : 400%;
     height: 100%;
     transition: ease-in 500ms;
     transform: ${props => `translateX(-${360 * props.process}px)`};
@@ -55,7 +55,7 @@ const StyledWrapper = styled.div<{ process: number; }>`
             border-radius : 50%;
             margin-right : 12px;
             &.on {
-              background-color : ${theme.green};
+              background-color : ${theme.primary};
               border : none;
             } 
           }

@@ -1,8 +1,9 @@
 const theme = {
-  green: "#00B984",
-  deepgreen: "#118F6B",
-  darkgreen: "#006f4f",
-  purple: "#8E49FF",
+  primary: "#eb5160",
+
+  monochrom_6: "#f3969f",
+
+  secondary: "#eb8f51",
 
   yellow: "#FFE602",
   blue: "#1BA3D7",

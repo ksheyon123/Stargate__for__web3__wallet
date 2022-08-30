@@ -18,13 +18,14 @@ export const LoginPageContainer = () => {
       if (isLoading) return;
       setIsLoading(true);
 
+      setPageNav("WALLET_1")
+
       const inputValue = await snapshot.getPromise(loginInputState);
       const rsp = getLocalStorage("keystore");
       if (!!rsp) {
         const _keystore = JSON.parse(rsp);
         const priv = await fromV3(inputValue, _keystore);
       }
-
     } catch (e) {
       throw e;
     } finally {
